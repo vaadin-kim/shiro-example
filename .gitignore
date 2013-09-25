@@ -1,0 +1,11 @@
+.classpath
+.settings
+.project
+shiro-login-within-vaadin-app/.classpath
+shiro-login-within-vaadin-app/.project
+shiro-login-within-vaadin-app/.settings/
+shiro-login-outside-vaadin-app/.settings/
+shiro-login-outside-vaadin-app/.classpath
+shiro-login-outside-vaadin-app/.project
+shiro-login-outside-vaadin-app/target
+shiro-login-within-vaadin-app/target
