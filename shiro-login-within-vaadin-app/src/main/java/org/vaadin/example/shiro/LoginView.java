@@ -25,6 +25,7 @@ public class LoginView extends FormLayout implements View, ClickListener {
 	private Label invalidPassword = new Label("Invalid username or password");
 
 	public LoginView() {
+		username.focus();
 		addComponent(username);
 		addComponent(password);
 		addComponent(loginBtn);
