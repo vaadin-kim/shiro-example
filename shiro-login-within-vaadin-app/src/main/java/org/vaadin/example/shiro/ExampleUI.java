@@ -25,20 +25,21 @@ public class ExampleUI extends UI implements ViewChangeListener {
 		navigator.addViewChangeListener(this);
 
 		navigator.addView("", LoginView.class);
-		navigator.addView("secure", SecureView.class);
+		if (SecurityUtils.getSubject().isAuthenticated()) {
+			getUI().getNavigator().addView("secure", SecureView.class);
+		}
+		navigator.setErrorView(ErrorView.class);
 	}
 
 	@Override
 	public boolean beforeViewChange(ViewChangeEvent event) {
 		Subject currentUser = SecurityUtils.getSubject();
-		if (currentUser.isAuthenticated()
-				&& event.getViewName().equals("")) {
+		if (currentUser.isAuthenticated() && event.getViewName().equals("")) {
 			event.getNavigator().navigateTo("secure");
 			return false;
 		}
 
-		if (!currentUser.isAuthenticated()
-				&& !event.getViewName().equals("")) {
+		if (!currentUser.isAuthenticated() && !event.getViewName().equals("")) {
 			event.getNavigator().navigateTo("");
 			return false;
 		}
@@ -49,7 +50,7 @@ public class ExampleUI extends UI implements ViewChangeListener {
 	@Override
 	public void afterViewChange(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

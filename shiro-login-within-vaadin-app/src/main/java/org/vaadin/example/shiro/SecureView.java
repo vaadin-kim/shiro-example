@@ -10,7 +10,9 @@ import com.vaadin.ui.VerticalLayout;
 
 public class SecureView extends VerticalLayout implements View {
 
-	public SecureView() {
+	private boolean initialized;
+
+	private void build() {
 		Logger.getLogger(getClass().getCanonicalName()).log(Level.INFO,
 				"Initializing secure view");
 		addComponent(new Label(
@@ -19,7 +21,10 @@ public class SecureView extends VerticalLayout implements View {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		// TODO Auto-generated method stub
+		if(!initialized) {
+			build();
+			initialized = true;
+		}
 
 	}
 

@@ -45,6 +45,7 @@ public class LoginView extends FormLayout implements View, ClickListener {
 				username.getValue(), password.getValue());
 		try {
 			currentUser.login(token);
+			getUI().getNavigator().addView("secure", SecureView.class);
 			getUI().getNavigator().navigateTo("secure");
 		} catch (Exception e) {
 			Logger.getAnonymousLogger().log(Level.INFO, e.getMessage());
