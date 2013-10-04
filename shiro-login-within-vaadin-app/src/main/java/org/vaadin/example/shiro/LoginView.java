@@ -9,6 +9,7 @@ import org.apache.shiro.subject.Subject;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -48,6 +49,8 @@ public class LoginView extends FormLayout implements View, ClickListener {
 			currentUser.login(token);
 			getUI().getNavigator().addView("secure", SecureView.class);
 			getUI().getNavigator().navigateTo("secure");
+			VaadinService
+					.reinitializeSession(VaadinService.getCurrentRequest());
 		} catch (Exception e) {
 			Logger.getAnonymousLogger().log(Level.INFO, e.getMessage());
 			username.setValue("");
